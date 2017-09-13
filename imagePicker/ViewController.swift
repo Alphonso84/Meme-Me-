@@ -9,7 +9,8 @@
 import UIKit
 
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate{
 
     
     @IBOutlet weak var textFieldTop: UITextField!
@@ -17,11 +18,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var textFieldBottom: UITextField!
     
     
+
+    
+
+    
     // Dictionary to setup TextField Attributes
     let memeTextAttributes:[String:Any] = [
         NSStrokeColorAttributeName: UIColor.black,
         NSForegroundColorAttributeName: UIColor.white,
-        NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 30)!,
+        NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 37)!,
         NSStrokeWidthAttributeName: -3.0
     ]
 
@@ -29,28 +34,51 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        textFieldTop.delegate = self
+        textFieldBottom.delegate = self
         textFieldTop.text = "TOP"
         textFieldBottom.text = "BOTTOM"
+        
+        
         
         textFieldTop.defaultTextAttributes = memeTextAttributes
         textFieldBottom.defaultTextAttributes = memeTextAttributes
         
+        textFieldShouldReturn(textFieldTop)
+        textFieldShouldReturn(textFieldBottom)
+
+        textFieldTop.clearsOnBeginEditing = true
+        textFieldBottom.clearsOnBeginEditing = true
         
-       
+        
         
         }
     
-    func textFieldDidBeginEditing(textField: UITextField) {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
         
+       return false
     }
     
     
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.clearsOnBeginEditing = false
+        
+        
+            }
     
+
+
+
+
     override func viewWillAppear(_ animated: Bool) {
          cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         textFieldTop.textAlignment = NSTextAlignment.center
         textFieldBottom.textAlignment = NSTextAlignment.center
+        
+        
         
     }
     
