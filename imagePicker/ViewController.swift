@@ -57,6 +57,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         textFieldTop.textAlignment = NSTextAlignment.center
         textFieldBottom.textAlignment = NSTextAlignment.center
         subscribeToKeyboardNotifications()
+        unsubcribeToKeyboardNotifications()
         
         
     }
@@ -65,28 +66,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         unsubcribeToKeyboardNotifications()
+       
         
     }
     
-    //NOTIFICATIONS
     
-    func bringViewBackDownNotification() {
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
-    }
-    
-    func unsubcribeToKeyboardNotifications() {
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
-    }
-
-    func subscribeToKeyboardNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification: )), name: .UIKeyboardWillShow, object: nil)
-    }
-
     //TEXTFIELD CONTROLS
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        
+       
         
        return false
     }
@@ -98,18 +87,29 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         
             }
+    //NOTIFICATIONS
+    
+    //In the below function, I added observer on KeyBoardWillHide to Unsubscribe notification. Not sure what the purpose of removing observer does so I commented it out.
+    func unsubcribeToKeyboardNotifications() {
+        //NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    func subscribeToKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification: )), name: .UIKeyboardWillShow, object: nil)
+    }
+
     
     
     //KEYBOARD CONTROLS
     
     func keyboardWillShow(notification: NSNotification) {
-        
         view.frame.origin.y -= getKeyboardHeight(notification: notification)
         
     }
-    
+    //Decided to use a fixed value as not to increment positions
     func keyboardWillHide(notification: NSNotification) {
-        view.frame.origin.y += getKeyboardHeight(notification: notification)
+        view.frame.origin.y = 0
     }
     
     
