@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_5" orientation="portrait">
+    <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,52 +19,47 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VnP-Fk-uet">
-                                <rect key="frame" x="0.0" y="692" width="414" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="vWP-S7-ndU"/>
-                                </constraints>
-                                <items>
-                                    <barButtonItem title="Pick" id="HPa-ec-l9t">
-                                        <connections>
-                                            <action selector="pickImage:" destination="BYZ-38-t0r" id="0Fr-kS-5zC"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" id="K3T-vh-DDS">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="d7e-b2-GMN">
-                                            <rect key="frame" x="63" y="7" width="165" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Camera"/>
-                                        </button>
-                                        <connections>
-                                            <action selector="imageFromCamera:" destination="BYZ-38-t0r" id="sQg-zQ-trF"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                             <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="j7u-5W-Kdi">
-                                <rect key="frame" x="0.0" y="110" width="414" height="516"/>
+                                <rect key="frame" x="0.0" y="110" width="768" height="804"/>
                             </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FDd-lc-lQ3">
-                                <rect key="frame" x="0.0" y="110" width="414" height="516"/>
+                                <rect key="frame" x="0.0" y="110" width="768" height="804"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SsY-f0-qUa" userLabel="textFieldTop">
-                                <rect key="frame" x="20" y="186" width="374" height="30"/>
+                                <rect key="frame" x="20" y="186" width="728" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Het-uh-xtx" userLabel="textFieldBottom">
-                                <rect key="frame" x="20" y="515" width="374" height="30"/>
+                                <rect key="frame" x="20" y="803" width="728" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VnP-Fk-uet">
+                                <rect key="frame" x="0.0" y="980" width="768" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="vWP-S7-ndU"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="Album" width="186" id="HPa-ec-l9t">
+                                        <connections>
+                                            <action selector="pickImage:" destination="BYZ-38-t0r" id="0Fr-kS-5zC"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem image="Camera" id="WQt-gs-V6E">
+                                        <connections>
+                                            <action selector="imageFromCamera:" destination="BYZ-38-t0r" id="aB6-gT-YIU"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -98,7 +93,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="cameraButton" destination="K3T-vh-DDS" id="CHq-me-OxQ"/>
+                        <outlet property="cameraButton" destination="WQt-gs-V6E" id="iaK-Zl-bZS"/>
                         <outlet property="selectedImage" destination="FDd-lc-lQ3" id="5Jw-o7-YGe"/>
                         <outlet property="textFieldBottom" destination="Het-uh-xtx" id="PQc-sx-Ghm"/>
                         <outlet property="textFieldTop" destination="SsY-f0-qUa" id="WEt-Hl-y5e"/>
@@ -109,4 +104,7 @@
             <point key="canvasLocation" x="136.23188405797103" y="136.95652173913044"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Camera" width="32" height="32"/>
+    </resources>
 </document>

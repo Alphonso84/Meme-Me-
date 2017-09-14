@@ -12,6 +12,8 @@
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>$(PRODUCT_NAME)</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Take a photo from rear camera</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>selecting photo</string>
 	<key>CFBundlePackageType</key>
