@@ -89,7 +89,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             }
     //NOTIFICATIONS
     
-    //In the below function, I added observer on KeyBoardWillHide to Unsubscribe notification. Not sure what the purpose of removing observer does so I commented it out.
+    //In the below function, I added observer on KeyBoardWillHide to Unsubscribe notification. Not sure what the purpose of removing observer does so It is commented out.
     func unsubcribeToKeyboardNotifications() {
         //NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: .UIKeyboardWillHide, object: nil)
