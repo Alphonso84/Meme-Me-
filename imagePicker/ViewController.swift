@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate{
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     
     @IBOutlet weak var textFieldTop: UITextField!
@@ -30,7 +30,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NSStrokeWidthAttributeName: -3.0
     ]
 
-    
+    // VIEW CONTROLS
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,13 +50,43 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         textFieldTop.clearsOnBeginEditing = true
         textFieldBottom.clearsOnBeginEditing = true
         
-        
-        
-        }
+    }
     
+    override func viewWillAppear(_ animated: Bool) {
+        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        textFieldTop.textAlignment = NSTextAlignment.center
+        textFieldBottom.textAlignment = NSTextAlignment.center
+        subscribeToKeyboardNotifications()
+        
+        
+    }
+
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        unsubcribeToKeyboardNotifications()
+        
+    }
+    
+    //NOTIFICATIONS
+    
+    func bringViewBackDownNotification() {
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    func unsubcribeToKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
+    }
+
+    func subscribeToKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification: )), name: .UIKeyboardWillShow, object: nil)
+    }
+
+    //TEXTFIELD CONTROLS
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        
         
        return false
     }
@@ -69,18 +99,28 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
             }
     
-
-
-
-
-    override func viewWillAppear(_ animated: Bool) {
-         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
-        textFieldTop.textAlignment = NSTextAlignment.center
-        textFieldBottom.textAlignment = NSTextAlignment.center
+    
+    //KEYBOARD CONTROLS
+    
+    func keyboardWillShow(notification: NSNotification) {
         
-        
+        view.frame.origin.y -= getKeyboardHeight(notification: notification)
         
     }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        view.frame.origin.y += getKeyboardHeight(notification: notification)
+    }
+    
+    
+    func getKeyboardHeight(notification: NSNotification) -> CGFloat {
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
+        return keyboardSize.cgRectValue.height
+    }
+
+    
+    // IMAGE PICKER CONTROLS
     
     @IBOutlet weak var selectedImage: UIImageView!
     
