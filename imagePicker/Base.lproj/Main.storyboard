@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -61,7 +61,8 @@
                                 </items>
                             </toolbar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l68-5o-7Fk" userLabel="UpperToolbar">
-                                <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <items>
                                     <barButtonItem systemItem="action" id="mDV-Xb-ibI">
                                         <connections>
@@ -74,8 +75,8 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="j7u-5W-Kdi" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="0Bw-ni-EGM"/>
+                            <constraint firstItem="l68-5o-7Fk" firstAttribute="leading" secondItem="FDd-lc-lQ3" secondAttribute="leading" id="2BL-pU-tF7"/>
                             <constraint firstItem="FDd-lc-lQ3" firstAttribute="bottom" secondItem="j7u-5W-Kdi" secondAttribute="bottom" identifier="1" id="30v-5I-9r3"/>
-                            <constraint firstItem="l68-5o-7Fk" firstAttribute="leading" secondItem="FDd-lc-lQ3" secondAttribute="leading" id="3GL-bV-KHD"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="VnP-Fk-uet" secondAttribute="bottom" identifier="24" id="4H7-bU-oqU"/>
                             <constraint firstItem="VnP-Fk-uet" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" identifier="20" id="8Kz-sO-EGI"/>
                             <constraint firstItem="SsY-f0-qUa" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" identifier="15" id="9CI-Hi-hHk"/>
@@ -88,16 +89,17 @@
                             <constraint firstItem="FDd-lc-lQ3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" identifier="3" id="OaZ-9D-u6I"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="VnP-Fk-uet" secondAttribute="bottom" identifier="25" id="PqP-pF-18A"/>
                             <constraint firstItem="VnP-Fk-uet" firstAttribute="top" secondItem="j7u-5W-Kdi" secondAttribute="bottom" constant="66" id="S9P-0M-XzK"/>
+                            <constraint firstItem="l68-5o-7Fk" firstAttribute="trailing" secondItem="j7u-5W-Kdi" secondAttribute="trailing" id="Tha-vd-yax"/>
                             <constraint firstAttribute="trailing" secondItem="j7u-5W-Kdi" secondAttribute="trailing" identifier="10" id="WNL-Wf-8Wg"/>
                             <constraint firstAttribute="trailing" secondItem="VnP-Fk-uet" secondAttribute="trailing" identifier="22" id="dML-v3-0dA"/>
-                            <constraint firstItem="l68-5o-7Fk" firstAttribute="trailing" secondItem="FDd-lc-lQ3" secondAttribute="trailing" id="dgk-S7-lni"/>
                             <constraint firstItem="j7u-5W-Kdi" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" identifier="12" id="eG8-ct-PFL"/>
                             <constraint firstItem="j7u-5W-Kdi" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="fhX-La-jd0"/>
-                            <constraint firstItem="l68-5o-7Fk" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="gx3-4H-DhN"/>
                             <constraint firstItem="FDd-lc-lQ3" firstAttribute="top" secondItem="SsY-f0-qUa" secondAttribute="top" constant="-76" identifier="4" id="krJ-aM-S1m"/>
                             <constraint firstAttribute="trailing" secondItem="j7u-5W-Kdi" secondAttribute="trailing" identifier="13" id="mTt-6l-whC"/>
                             <constraint firstItem="Het-uh-xtx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" identifier="18" id="ou5-c8-Zhx"/>
+                            <constraint firstItem="l68-5o-7Fk" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="pkn-s0-fU3"/>
                             <constraint firstItem="FDd-lc-lQ3" firstAttribute="top" secondItem="j7u-5W-Kdi" secondAttribute="top" identifier="5" id="qTk-OW-Sem"/>
+                            <constraint firstItem="FDd-lc-lQ3" firstAttribute="top" secondItem="l68-5o-7Fk" secondAttribute="bottom" constant="60" id="qsK-D8-5if"/>
                             <constraint firstItem="FDd-lc-lQ3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" identifier="6" id="sn9-P0-Fkz"/>
                             <constraint firstAttribute="trailing" secondItem="FDd-lc-lQ3" secondAttribute="trailing" identifier="7" id="syj-y7-5qK"/>
                             <constraint firstItem="j7u-5W-Kdi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" identifier="14" id="tvk-1r-9JU"/>
@@ -107,15 +109,17 @@
                     </view>
                     <connections>
                         <outlet property="cameraButton" destination="WQt-gs-V6E" id="iaK-Zl-bZS"/>
+                        <outlet property="lowerToolBar" destination="VnP-Fk-uet" id="zly-je-ERs"/>
                         <outlet property="selectedImage" destination="FDd-lc-lQ3" id="5Jw-o7-YGe"/>
                         <outlet property="shareMemeButton" destination="mDV-Xb-ibI" id="d5L-8g-AqU"/>
                         <outlet property="textFieldBottom" destination="Het-uh-xtx" id="PQc-sx-Ghm"/>
                         <outlet property="textFieldTop" destination="SsY-f0-qUa" id="WEt-Hl-y5e"/>
+                        <outlet property="upperToolBar" destination="l68-5o-7Fk" id="dOf-ja-aJJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.23188405797103" y="136.95652173913044"/>
+            <point key="canvasLocation" x="-191" y="104"/>
         </scene>
     </scenes>
     <resources>

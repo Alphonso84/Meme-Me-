@@ -12,15 +12,10 @@ import UIKit
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIPopoverPresentationControllerDelegate {
 
     @IBOutlet weak var shareMemeButton: UIBarButtonItem!
-    
+    //TEXTFIELD OUTLETS
     @IBOutlet weak var textFieldTop: UITextField!
     
     @IBOutlet weak var textFieldBottom: UITextField!
-    
-    
-
-    
-
     
     // Dictionary to setup TextField Attributes
     let memeTextAttributes:[String:Any] = [
@@ -39,19 +34,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         textFieldTop.text = "TOP"
         textFieldBottom.text = "BOTTOM"
         
-        
-        
+        //TEXT FIELD ATTRIBUTES
         textFieldTop.defaultTextAttributes = memeTextAttributes
         textFieldBottom.defaultTextAttributes = memeTextAttributes
-        
+        //TEXT FIELD RETURN
         textFieldShouldReturn(textFieldTop)
         textFieldShouldReturn(textFieldBottom)
-
+        //TEXT FIELD CLEARS ON EDIT
         textFieldTop.clearsOnBeginEditing = true
         textFieldBottom.clearsOnBeginEditing = true
        
-        
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,8 +52,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         textFieldBottom.textAlignment = NSTextAlignment.center
         subscribeToKeyboardNotifications()
         unsubcribeToKeyboardNotifications()
-        
-               
         
     }
 
@@ -74,14 +64,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func prepareForPopoverPresentation(_ popoverPresentationController: UIPopoverPresentationController) {
-        
-        
         self.popoverPresentationController?.barButtonItem = self.shareMemeButton.self
-        
         self.present( self, animated: true, completion: nil)
         
 
     }
+    
     
     
     
@@ -115,7 +103,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     
     
-    //KEYBOARD CONTROLS
+//KEYBOARD CONTROLS
     
     func keyboardWillShow(notification: NSNotification) {
         if textFieldBottom.isFirstResponder {
@@ -130,7 +118,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
-    
+    //FUNTION FOR KEYBOARD HEIGHT RETURNED AS CGFLOAT
     func getKeyboardHeight(notification: NSNotification) -> CGFloat {
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
@@ -143,34 +131,44 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         var topText: String
         var bottomText: String
         var originalImage: UIImage
-        var memedImage: UIImage
+        
+    }
+    //created outlets for upper and lower toolbars
+    @IBOutlet weak var upperToolBar: UIToolbar!
+    @IBOutlet weak var lowerToolBar: UIToolbar!
+    
+    
+    
+   func generateMemedImage() -> UIImage {
+   
+    UIGraphicsBeginImageContext(self.view.frame.size)
+    view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+    let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+    
+    return memedImage
+    
     }
     
     func saveMeme() {
-        let meme = Meme(topText: textFieldTop.text!, bottomText: textFieldBottom.text!, originalImage: selectedImage.image!, memedImage: generateMemedImage())
-            }
-    
-    
-    func generateMemedImage() -> UIImage {
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
-        let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-        
-        return memedImage
-        
+        let meme = Meme(topText: textFieldTop.text!, bottomText: textFieldBottom.text!, originalImage: selectedImage.image!)
     }
     
     
     //SHARING
     @IBAction func shareMeme(_ sender: Any) {
+        upperToolBar.isHidden = true
+        lowerToolBar.isHidden = true
         
-        generateMemedImage()
-        let meme = UIImage()
-        let controller = UIActivityViewController(activityItems: [meme], applicationActivities: nil)
+        let memedImage = generateMemedImage()
+        let controller = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         self.present(controller, animated: true, completion: nil)
         //The below code presents as Popover and allows share button to work on iPads
         controller.popoverPresentationController?.barButtonItem = (sender as! UIBarButtonItem)
+        generateMemedImage()
         
+        //The below code hides the toolbars as to not to show in the saved memedImage.
+        upperToolBar.isHidden = false
+        lowerToolBar.isHidden = false
     }
     
     
@@ -188,8 +186,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePicker.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
-        // below i Added removeObserver to the pickImageFromAlbum func as I was noticing the spacing was duplicated when an image was chosen but not when no image was selected. I believe the image picker was duplicating the keyboard height or calling it a second time.
+        // below i Added removeObserver to the pickImage func as I was noticing the spacing was duplicated when an image was chosen but not when no image was selected. I believe the image picker was duplicating the keyboard height or calling it a second time.
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
+        
         }
     
     @IBAction func imageFromCamera(_ sender: Any) {

@@ -16,6 +16,8 @@
 	<string>Take a photo from rear camera</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>selecting photo</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>saving a photo to library</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
