@@ -9,7 +9,6 @@
 import UIKit
 
 
-
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     
@@ -123,6 +122,37 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return keyboardSize.cgRectValue.height
     }
 
+    
+    //MEME GENERATOR
+    struct Meme {
+        var topText: String
+        var bottomText: String
+        var originalImage: UIImage
+        var memedImage: UIImage
+    }
+    
+    func saveMeme() {
+        let meme = Meme(topText: textFieldTop.text!, bottomText: textFieldBottom.text!, originalImage: selectedImage.image!, memedImage: generateMemedImage())
+    }
+    
+    
+    func generateMemedImage() -> UIImage {
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        return memedImage
+        
+    }
+    
+    @IBAction func shareMeme(_ sender: Any) {
+        let meme = UIImage()
+        let controller = UIActivityViewController(activityItems: [meme], applicationActivities: nil)
+        self.present(controller, animated: true, completion: nil)
+    }
+    
+    
+    
+    
     
     // IMAGE PICKER CONTROLS
     
