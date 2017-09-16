@@ -9,8 +9,9 @@
 import UIKit
 
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIPopoverPresentationControllerDelegate {
 
+    @IBOutlet weak var shareMemeButton: UIBarButtonItem!
     
     @IBOutlet weak var textFieldTop: UITextField!
     
@@ -48,7 +49,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
         textFieldTop.clearsOnBeginEditing = true
         textFieldBottom.clearsOnBeginEditing = true
+       
         
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,6 +61,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         subscribeToKeyboardNotifications()
         unsubcribeToKeyboardNotifications()
         
+               
         
     }
 
@@ -68,6 +72,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
        
         
     }
+    
+    func prepareForPopoverPresentation(_ popoverPresentationController: UIPopoverPresentationController) {
+        
+        
+        self.popoverPresentationController?.barButtonItem = self.shareMemeButton.self
+        
+        self.present( self, animated: true, completion: nil)
+        
+
+    }
+    
     
     
     //TEXTFIELD CONTROLS
@@ -133,21 +148,29 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func saveMeme() {
         let meme = Meme(topText: textFieldTop.text!, bottomText: textFieldBottom.text!, originalImage: selectedImage.image!, memedImage: generateMemedImage())
-    }
+            }
     
     
     func generateMemedImage() -> UIImage {
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        
         return memedImage
         
     }
     
+    
+    //SHARING
     @IBAction func shareMeme(_ sender: Any) {
+        
+        generateMemedImage()
         let meme = UIImage()
         let controller = UIActivityViewController(activityItems: [meme], applicationActivities: nil)
         self.present(controller, animated: true, completion: nil)
+        //The below code presents as Popover and allows share button to work on iPads
+        controller.popoverPresentationController?.barButtonItem = (sender as! UIBarButtonItem)
+        
     }
     
     

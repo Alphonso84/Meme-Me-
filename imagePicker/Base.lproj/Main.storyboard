@@ -108,6 +108,7 @@
                     <connections>
                         <outlet property="cameraButton" destination="WQt-gs-V6E" id="iaK-Zl-bZS"/>
                         <outlet property="selectedImage" destination="FDd-lc-lQ3" id="5Jw-o7-YGe"/>
+                        <outlet property="shareMemeButton" destination="mDV-Xb-ibI" id="d5L-8g-AqU"/>
                         <outlet property="textFieldBottom" destination="Het-uh-xtx" id="PQc-sx-Ghm"/>
                         <outlet property="textFieldTop" destination="SsY-f0-qUa" id="WEt-Hl-y5e"/>
                     </connections>
