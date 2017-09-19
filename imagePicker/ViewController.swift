@@ -29,20 +29,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        textFieldTop.delegate = self
-        textFieldBottom.delegate = self
+        
+    //TEXT FIELD ATTRIBUTES FUNCTION
+        func configTextFields(textField: UITextField) {
+            textField.delegate = self
+            textField.defaultTextAttributes = memeTextAttributes
+            textFieldShouldReturn(textField)
+            textField.clearsOnBeginEditing = true
+        }
         textFieldTop.text = "TOP"
         textFieldBottom.text = "BOTTOM"
         
-        //TEXT FIELD ATTRIBUTES
-        textFieldTop.defaultTextAttributes = memeTextAttributes
-        textFieldBottom.defaultTextAttributes = memeTextAttributes
-        //TEXT FIELD RETURN
-        textFieldShouldReturn(textFieldTop)
-        textFieldShouldReturn(textFieldBottom)
-        //TEXT FIELD CLEARS ON EDIT
-        textFieldTop.clearsOnBeginEditing = true
-        textFieldBottom.clearsOnBeginEditing = true
+        //CALLING FUNCTION TO CONFIGURE EACH TEXT FIELD
+        configTextFields(textField: textFieldTop)
+        configTextFields(textField: textFieldBottom)
+        
+       
+        
+       
        
     }
     
