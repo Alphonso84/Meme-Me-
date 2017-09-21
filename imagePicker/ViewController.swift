@@ -44,10 +44,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         configTextFields(textField: textFieldTop)
         configTextFields(textField: textFieldBottom)
         
-       
-        
-       
-       
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,35 +60,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewWillDisappear(animated)
         unsubcribeToKeyboardNotifications()
        
-        
     }
     
     func prepareForPopoverPresentation(_ popoverPresentationController: UIPopoverPresentationController) {
         self.popoverPresentationController?.barButtonItem = self.shareMemeButton.self
         self.present( self, animated: true, completion: nil)
-        
-
+    
     }
-    
-    
-    
     
     //TEXTFIELD CONTROLS
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-       
-        
        return false
     }
     
-    
-    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.clearsOnBeginEditing = false
-        
-        
-            }
+        }
     //NOTIFICATIONS
     
     //In the below function, I added observer on KeyBoardWillHide to Unsubscribe notification. Not sure what the purpose of removing observer does so It is commented out.
@@ -165,59 +150,59 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         let memedImage = generateMemedImage()
         let controller = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+        
+        controller.completionWithItemsHandler = {
+            activity, completed, items, error in
+            if completed {
+                self.saveMeme()
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
         self.present(controller, animated: true, completion: nil)
         //The below code presents as Popover and allows share button to work on iPads
         controller.popoverPresentationController?.barButtonItem = (sender as! UIBarButtonItem)
-        generateMemedImage()
+        self.generateMemedImage()
         
         //The below code hides the toolbars as to not to show in the saved memedImage.
         upperToolBar.isHidden = false
         lowerToolBar.isHidden = false
     }
     
-    
-    
-    
-    
     // IMAGE PICKER CONTROLS
     
     @IBOutlet weak var selectedImage: UIImageView!
     
     @IBOutlet weak var cameraButton: UIBarButtonItem!
-
-    @IBAction func pickImage(_ sender: Any) {
+    
+    
+    //Function choosesSourceType for imagePicker
+    func chooseSourceType(sourceType:UIImagePickerControllerSourceType) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
-        imagePicker.sourceType = .photoLibrary
+        imagePicker.sourceType = sourceType
         present(imagePicker, animated: true, completion: nil)
         // below i Added removeObserver to the pickImage func as I was noticing the spacing was duplicated when an image was chosen but not when no image was selected. I believe the image picker was duplicating the keyboard height or calling it a second time.
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
-        
+    }
+
+    @IBAction func pickImage(_ sender: Any) {
+         chooseSourceType(sourceType: .photoLibrary)
         }
     
     @IBAction func imageFromCamera(_ sender: Any) {
         
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
-        imagePicker.sourceType = .camera
-        present(imagePicker, animated: true, completion: nil)
-        // below i Added removeObserver to the pickImageFromAlbum func as I was noticing the spacing was duplicated when an image was chosen but not when no image was selected. I believe the image picker was duplicating the keyboard height or calling it a second time.
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
+        chooseSourceType(sourceType: .camera)
     }
     
     
      func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
-       
         selectedImage.image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        
-        
         dismiss(animated: true, completion: nil)
     
     }
     
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        
         dismiss(animated: true, completion: nil)
         
     }
