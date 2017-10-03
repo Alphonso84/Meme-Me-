@@ -115,13 +115,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     
-    //MEME GENERATOR
-    struct Meme {
-        var topText: String
-        var bottomText: String
-        var originalImage: UIImage
-        
-    }
+   
     //created outlets for upper and lower toolbars
     @IBOutlet weak var upperToolBar: UIToolbar!
     @IBOutlet weak var lowerToolBar: UIToolbar!
@@ -140,6 +134,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func saveMeme() {
         let meme = Meme(topText: textFieldTop.text!, bottomText: textFieldBottom.text!, originalImage: selectedImage.image!)
+        
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+         appDelegate.memes.append(meme)
     }
     
     
