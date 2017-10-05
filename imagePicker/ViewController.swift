@@ -44,6 +44,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         configTextFields(textField: textFieldTop)
         configTextFields(textField: textFieldBottom)
         
+    
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -134,10 +136,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func saveMeme() {
         let meme = Meme(topText: textFieldTop.text!, bottomText: textFieldBottom.text!, originalImage: selectedImage.image!)
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            // Apply Error Handling here. Could display an AlertView
+            return
+        }
         
-        let object = UIApplication.shared.delegate
-        let appDelegate = object as! AppDelegate
-         appDelegate.memes.append(meme)
+        appDelegate.memes.append(meme)
+        
     }
     
     
