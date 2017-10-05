@@ -48,6 +48,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         textFieldTop.textAlignment = NSTextAlignment.center
@@ -136,13 +140,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func saveMeme() {
         let meme = Meme(topText: textFieldTop.text!, bottomText: textFieldBottom.text!, originalImage: selectedImage.image!)
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            // Apply Error Handling here. Could display an AlertView
-            return
-        }
-        
+       
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
         appDelegate.memes.append(meme)
-        
+       // print(appDelegate.memes)
     }
     
     

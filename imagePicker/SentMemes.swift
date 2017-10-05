@@ -8,20 +8,21 @@
 
 import UIKit
 
-class SentMemes: UITableView {
+class SentMemes: UIViewController {
 
-        //var memeData: [Meme]!
+    var memeData: [Meme]!
         
     @IBOutlet weak var tableView: UITableView!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-    var memes : [Meme] {
-        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-            return appDelegate.memes
-        } else {
-            return [Meme]()
-        }
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        memeData = appDelegate.memes
     }
+    
+   
         
         
         
@@ -31,12 +32,13 @@ class SentMemes: UITableView {
         }
         
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return memes.count
+            return memeData.count
         }
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "myCell")
-            
+            cell?.textLabel?.text = memeData[indexPath.row].topText
+            cell?.imageView?.image = memeData[indexPath.row].originalImage
             return cell!
         }
         
