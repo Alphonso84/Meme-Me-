@@ -6,8 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
-        <capability name="Baseline standard spacing" minToolsVersion="9.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,11 +22,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hqi-Dt-Oks">
-                                <rect key="frame" x="0.0" y="72" width="414" height="664"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kmT-6G-W5C">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="72"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="72" id="t9R-St-9aG"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem systemItem="add" id="Roe-vd-ajd">
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="show" id="TFz-88-LOe"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hqi-Dt-Oks">
+                                <rect key="frame" x="0.0" y="78" width="414" height="658"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="myCell" textLabel="shZ-ND-Olx" detailTextLabel="Ach-4t-Mx8" style="IBUITableViewCellStyleSubtitle" id="0yj-LN-4lS">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="myCell" textLabel="shZ-ND-Olx" detailTextLabel="Ach-4t-Mx8" style="IBUITableViewCellStyleSubtitle" id="0yj-LN-4lS">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0yj-LN-4lS" id="fLV-VB-aiA">
@@ -36,14 +47,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="shZ-ND-Olx">
-                                                    <rect key="frame" x="15" y="5" width="33.5" height="20"/>
+                                                    <rect key="frame" x="15" y="5" width="33.333333333333336" height="20.333333333333332"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ach-4t-Mx8">
-                                                    <rect key="frame" x="15" y="25" width="43.5" height="14.5"/>
+                                                    <rect key="frame" x="14.999999999999996" y="25.333333333333332" width="43.666666666666664" height="14.333333333333334"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -58,28 +69,15 @@
                                     <outlet property="delegate" destination="R1K-v0-MEY" id="MMf-qf-OKs"/>
                                 </connections>
                             </tableView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kmT-6G-W5C">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="72"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="72" id="t9R-St-9aG"/>
-                                </constraints>
-                                <items>
-                                    <barButtonItem systemItem="add" id="Roe-vd-ajd">
-                                        <connections>
-                                            <segue destination="BYZ-38-t0r" kind="show" id="TFz-88-LOe"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="kmT-6G-W5C" secondAttribute="trailing" id="4B5-ql-Iec"/>
+                            <constraint firstItem="hqi-Dt-Oks" firstAttribute="bottom" secondItem="dw7-Z2-8XI" secondAttribute="top" id="4WL-Bh-bB3"/>
                             <constraint firstItem="kmT-6G-W5C" firstAttribute="leading" secondItem="gOU-cS-jiC" secondAttribute="leading" id="DgU-n7-Dby"/>
-                            <constraint firstAttribute="trailing" secondItem="hqi-Dt-Oks" secondAttribute="trailing" id="Tvp-SX-6gf"/>
-                            <constraint firstItem="hqi-Dt-Oks" firstAttribute="bottom" secondItem="dw7-Z2-8XI" secondAttribute="top" id="ZV6-g2-4mY"/>
-                            <constraint firstItem="hqi-Dt-Oks" firstAttribute="leading" secondItem="gOU-cS-jiC" secondAttribute="leading" id="c36-Zb-2Ix"/>
-                            <constraint firstItem="kmT-6G-W5C" firstAttribute="baseline" secondItem="hqi-Dt-Oks" secondAttribute="firstBaseline" symbolType="layoutAnchor" id="sXF-HX-FqT"/>
+                            <constraint firstItem="hqi-Dt-Oks" firstAttribute="trailing" secondItem="kmT-6G-W5C" secondAttribute="trailing" id="bmm-PN-klF"/>
+                            <constraint firstItem="hqi-Dt-Oks" firstAttribute="top" secondItem="kmT-6G-W5C" secondAttribute="bottom" constant="6" id="iAV-Aw-8rA"/>
+                            <constraint firstItem="hqi-Dt-Oks" firstAttribute="leading" secondItem="kmT-6G-W5C" secondAttribute="leading" id="vgm-Ih-jgk"/>
                             <constraint firstItem="kmT-6G-W5C" firstAttribute="top" secondItem="gOU-cS-jiC" secondAttribute="top" id="vtt-mT-P8F"/>
                         </constraints>
                     </view>

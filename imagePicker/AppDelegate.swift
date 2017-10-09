@@ -13,6 +13,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var memes = [Meme]()
+    
     var window: UIWindow?
     
     
