@@ -65,8 +65,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="R1K-v0-MEY" id="XQz-jI-r1r"/>
-                                    <outlet property="delegate" destination="R1K-v0-MEY" id="MMf-qf-OKs"/>
+                                    <outlet property="dataSource" destination="R1K-v0-MEY" id="eCc-6k-9Nj"/>
+                                    <outlet property="delegate" destination="R1K-v0-MEY" id="eTU-UM-fbV"/>
                                 </connections>
                             </tableView>
                         </subviews>

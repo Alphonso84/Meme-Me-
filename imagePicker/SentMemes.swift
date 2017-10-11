@@ -8,23 +8,31 @@
 
 import UIKit
 
-class SentMemes: UIViewController {
+class SentMemes: UIViewController,UITableViewDelegate, UITableViewDataSource {
 
-    var memes: [Meme]!
+    var memes = [Meme]()
         
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        memes = appDelegate.memes
-        tableView.reloadData()
         
+        tableView.delegate = self
+        tableView.dataSource = self
+        super.viewDidLoad()
+        //let memes = (UIApplication.shared.delegate as! AppDelegate).memes
+       // memes = appDelegate.memes
+        }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        memes = (UIApplication.shared.delegate as! AppDelegate).memes
+        tableView.reloadData()
     }
     
-    func viewWillAppear() {
-        
-    }
+//    func viewDidAppear() {
+//        tableView.reloadData()
+//    }
         
         func numberOfSections(in tableView: UITableView) -> Int {
             
