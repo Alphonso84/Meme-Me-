@@ -90,10 +90,10 @@
             </objects>
             <point key="canvasLocation" x="-763.768115942029" y="-273.09782608695656"/>
         </scene>
-        <!--View Controller-->
+        <!--Sent Memes Collection View-->
         <scene sceneID="OY7-Kz-P3B">
             <objects>
-                <viewController id="PxL-sE-euK" sceneMemberID="viewController">
+                <viewController id="PxL-sE-euK" customClass="SentMemesCollectionView" customModule="imagePicker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qqI-fl-Lo1"/>
                         <viewControllerLayoutGuide type="bottom" id="yEk-7c-XF4"/>
@@ -102,42 +102,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="g2Q-vB-JzY">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="g2Q-vB-JzY">
                                 <rect key="frame" x="0.0" y="72" width="414" height="615"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="do7-xV-3Pp">
-                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="itemSize" width="108" height="117"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="AQq-PB-OJo">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="AQq-PB-OJo" customClass="CollectionViewCell" customModule="imagePicker" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="108" height="117"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="108" height="117"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3mr-h2-eLg">
+                                                    <rect key="frame" x="0.0" y="0.0" width="108" height="117"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
                                         </view>
+                                        <connections>
+                                            <outlet property="myImageView" destination="3mr-h2-eLg" id="C0A-15-maS"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="PxL-sE-euK" id="OOl-zC-u6S"/>
+                                    <outlet property="delegate" destination="PxL-sE-euK" id="7pV-rl-nAn"/>
+                                </connections>
                             </collectionView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e3y-BU-5xT">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <barButtonItem systemItem="add" id="mXd-dI-145"/>
+                                    <barButtonItem systemItem="add" id="mXd-dI-145">
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="show" id="uE0-jF-npf"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="yEk-7c-XF4" firstAttribute="top" secondItem="g2Q-vB-JzY" secondAttribute="bottom" id="FN5-ZT-HPz"/>
-                            <constraint firstAttribute="trailing" secondItem="g2Q-vB-JzY" secondAttribute="trailing" id="N7e-nE-ZD7"/>
-                            <constraint firstItem="g2Q-vB-JzY" firstAttribute="leading" secondItem="YwF-Wu-SKs" secondAttribute="leading" id="kwB-tx-FcU"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="menu" id="TlK-47-NKc"/>
+                    <connections>
+                        <outlet property="collectionView" destination="g2Q-vB-JzY" id="Gzg-Jy-dih"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FRP-2u-1Od" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -342,6 +358,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="rbc-kT-cCz" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zlw-h4-Yw3">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
@@ -360,4 +377,7 @@
         <image name="list" width="32" height="32"/>
         <image name="menu" width="32" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="TFz-88-LOe"/>
+    </inferredMetricsTieBreakers>
 </document>
