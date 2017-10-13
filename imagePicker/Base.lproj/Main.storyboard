@@ -93,7 +93,7 @@
         <!--Sent Memes Collection View-->
         <scene sceneID="OY7-Kz-P3B">
             <objects>
-                <viewController id="PxL-sE-euK" customClass="SentMemesCollectionView" customModule="imagePicker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="detailViewController" id="PxL-sE-euK" customClass="SentMemesCollectionView" customModule="imagePicker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qqI-fl-Lo1"/>
                         <viewControllerLayoutGuide type="bottom" id="yEk-7c-XF4"/>
@@ -153,11 +153,57 @@
                     <tabBarItem key="tabBarItem" title="" image="menu" id="TlK-47-NKc"/>
                     <connections>
                         <outlet property="collectionView" destination="g2Q-vB-JzY" id="Gzg-Jy-dih"/>
+                        <segue destination="ccg-zN-jlX" kind="show" identifier="detailSegue" id="m1I-hn-0cT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FRP-2u-1Od" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-765.21739130434787" y="466.304347826087"/>
+        </scene>
+        <!--Meme Detail View Controller-->
+        <scene sceneID="DUl-kd-CmP">
+            <objects>
+                <viewController storyboardIdentifier="MemeDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ccg-zN-jlX" customClass="MemeDetailViewController" customModule="imagePicker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="icC-65-8UI"/>
+                        <viewControllerLayoutGuide type="bottom" id="Jhd-is-cGb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8HZ-gf-Kj0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BEb-TD-wwX">
+                                <rect key="frame" x="20" y="183" width="374" height="371"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wxj-VN-flJ">
+                                <rect key="frame" x="33" y="69" width="69" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="69" id="G8x-qm-72a"/>
+                                    <constraint firstAttribute="height" constant="34" id="ZMs-fS-fEa"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="PxL-sE-euK" kind="show" id="dZW-pk-aNe"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wxj-VN-flJ" firstAttribute="leading" secondItem="8HZ-gf-Kj0" secondAttribute="leadingMargin" constant="13" id="LSE-wI-sQW"/>
+                            <constraint firstItem="BEb-TD-wwX" firstAttribute="leading" secondItem="8HZ-gf-Kj0" secondAttribute="leadingMargin" id="Pzk-6M-E5c"/>
+                            <constraint firstItem="BEb-TD-wwX" firstAttribute="centerY" secondItem="8HZ-gf-Kj0" secondAttribute="centerY" id="TRV-WS-aJc"/>
+                            <constraint firstItem="BEb-TD-wwX" firstAttribute="top" secondItem="wxj-VN-flJ" secondAttribute="bottom" constant="80" id="UcZ-Jp-vOh"/>
+                            <constraint firstItem="BEb-TD-wwX" firstAttribute="trailing" secondItem="8HZ-gf-Kj0" secondAttribute="trailingMargin" id="aIX-cp-sda"/>
+                            <constraint firstItem="wxj-VN-flJ" firstAttribute="top" secondItem="icC-65-8UI" secondAttribute="bottom" constant="49" id="z1T-Sp-akX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="memeImage" destination="BEb-TD-wwX" id="Cbd-h5-hm9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1tf-Cj-ZqA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="320.28985507246381" y="864.94565217391312"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -378,6 +424,8 @@
         <image name="menu" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TFz-88-LOe"/>
+        <segue reference="m1I-hn-0cT"/>
+        <segue reference="uE0-jF-npf"/>
+        <segue reference="dZW-pk-aNe"/>
     </inferredMetricsTieBreakers>
 </document>

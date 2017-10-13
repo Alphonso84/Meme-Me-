@@ -19,33 +19,26 @@ class SentMemes: UIViewController,UITableViewDelegate, UITableViewDataSource {
         tableView.delegate = self
         tableView.dataSource = self
         super.viewDidLoad()
-        //let memes = (UIApplication.shared.delegate as! AppDelegate).memes
-       // memes = appDelegate.memes
+        
         }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
         memes = (UIApplication.shared.delegate as! AppDelegate).memes
         tableView.reloadData()
     }
-    
-//    func viewDidAppear() {
-//        tableView.reloadData()
-//    }
-        
-        func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
             
-            return 1
+        return 1
         }
         
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return memes.count
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return memes.count
         }
         
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "myCell")
-           cell?.textLabel?.text = memes[indexPath.row].topText
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+           let cell = tableView.dequeueReusableCell(withIdentifier: "myCell")
+           cell?.textLabel?.text = memes[indexPath.row].topText + memes[indexPath.row].bottomText
            cell?.imageView?.image = memes[indexPath.row].originalImage
             return cell!
         }
