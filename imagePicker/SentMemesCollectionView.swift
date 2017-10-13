@@ -14,7 +14,7 @@ class SentMemesCollectionView: UIViewController, UICollectionViewDataSource, UIC
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    //private let reuseIdentifier = "cell"
+    
     
 override func viewDidLoad() {
         collectionView.delegate = self
@@ -66,9 +66,7 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
         navigationController?.pushViewController(detailController, animated: true)
         print(indexPath.row)
         present(detailController, animated: true, completion: nil)
-//        func prepare(for segue:UIStoryboardSegue , sender: Any?) {
-//            if segue.identifier == "detailSegue" {
-//                var nextScene = segue.destination as! MemeDetailViewController
+
         
             }
         }
