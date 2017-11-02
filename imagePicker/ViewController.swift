@@ -48,9 +48,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-    }
+   
     
     override func viewWillAppear(_ animated: Bool) {
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
@@ -141,6 +139,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     }
     
+    //MEME FUNCTIONS
+    
     
     func saveMeme()  {
        
@@ -151,9 +151,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         appDelegate.memes.append(meme)
       
     }
-    
-    
-    //SHARING
+    //SHARE FUNCTION
     @IBAction func shareMeme(_ sender: Any) {
         
         let controller = UIActivityViewController(activityItems: [generateMemedImage()], applicationActivities: nil)
@@ -211,8 +209,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         dismiss(animated: true, completion: nil)
         
     }
-
-    
 
 }
 

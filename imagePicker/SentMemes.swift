@@ -28,6 +28,7 @@ class SentMemes: UIViewController,UITableViewDelegate, UITableViewDataSource {
         tableView.reloadData()
         
     }
+    //TABLEVIEW FUNCTIONS
     func numberOfSections(in tableView: UITableView) -> Int {
             
         return 1
