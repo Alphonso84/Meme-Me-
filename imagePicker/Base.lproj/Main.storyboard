@@ -285,6 +285,12 @@
                                             <action selector="shareMeme:" destination="BYZ-38-t0r" id="oHF-qy-6qE"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem width="304" style="plain" systemItem="fixedSpace" id="Pwl-ma-n9o"/>
+                                    <barButtonItem systemItem="cancel" id="8Dl-Ae-0Id">
+                                        <connections>
+                                            <segue destination="rbc-kT-cCz" kind="show" id="4dA-WV-MPT"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </toolbar>
