@@ -53,8 +53,8 @@ func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection s
     
 func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CollectionViewCell
-        let meme = memes[indexPath.row].originalImage
-        cell.setMeme(image: meme)
+        let meme = memes[indexPath.row]
+        cell.myImageView.image = meme.memedImage
     
         return cell
     }
@@ -63,7 +63,8 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
         let detailController = storyboard?.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
         detailController.meme = memes[indexPath.row]
         
-        navigationController?.pushViewController(detailController, animated: true)
+        navigationController?.present(detailController, animated: true, completion: nil)
+        //pushViewController(detailController, animated: true)
         print(indexPath.row)
         present(detailController, animated: true, completion: nil)
 

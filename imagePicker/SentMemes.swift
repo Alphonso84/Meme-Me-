@@ -10,7 +10,7 @@ import UIKit
 
 class SentMemes: UIViewController,UITableViewDelegate, UITableViewDataSource {
 
-    var memes = [Meme]()
+    var memes: [Meme] { return (UIApplication.shared.delegate as! AppDelegate).memes }
         
     @IBOutlet weak var tableView: UITableView!
     
@@ -24,8 +24,9 @@ class SentMemes: UIViewController,UITableViewDelegate, UITableViewDataSource {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        memes = (UIApplication.shared.delegate as! AppDelegate).memes
+        //memes = (UIApplication.shared.delegate as! AppDelegate).memes
         tableView.reloadData()
+        
     }
     func numberOfSections(in tableView: UITableView) -> Int {
             
@@ -37,11 +38,19 @@ class SentMemes: UIViewController,UITableViewDelegate, UITableViewDataSource {
         }
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-           let cell = tableView.dequeueReusableCell(withIdentifier: "myCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell")
+        _ = memes[indexPath.row]
            cell?.textLabel?.text = memes[indexPath.row].topText + memes[indexPath.row].bottomText
-           cell?.imageView?.image = memes[indexPath.row].originalImage
+           cell?.imageView?.image = memes[indexPath.row].memedImage
             return cell!
         }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailController = storyboard?.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
+        detailController.meme = memes[indexPath.row]
+        
+        navigationController?.pushViewController(detailController, animated: true)
+        present(detailController, animated: true, completion: nil)
+    }
         
         
     }
