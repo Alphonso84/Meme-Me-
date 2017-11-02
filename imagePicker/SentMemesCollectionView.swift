@@ -26,13 +26,9 @@ override func viewDidLoad() {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsetsMake(20, 0, 10, 0)
         layout.itemSize = CGSize(width: itemSize, height: itemSize)
-    
         layout.minimumInteritemSpacing = 3
         layout.minimumLineSpacing = 3
-    
         collectionView.collectionViewLayout = layout
-   
-    
     }
     
 override func viewWillAppear(_ animated: Bool) {
@@ -55,7 +51,6 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CollectionViewCell
         let meme = memes[indexPath.row]
         cell.myImageView.image = meme.memedImage
-    
         return cell
     }
     
@@ -68,7 +63,6 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
         //THESE ARE DIFFERENT IMPLEMENTATIONS OF PRESENTING THE DETAILVIEWCONTROLLER Change above for testing
         //present(detailController, animated: true, completion: nil)
         //pushViewController(detailController, animated: true)
-        print(indexPath.row)
         //present(detailController, animated: true, completion: nil)
 
         

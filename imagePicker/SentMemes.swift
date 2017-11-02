@@ -47,7 +47,6 @@ class SentMemes: UIViewController,UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailController = storyboard?.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
         detailController.meme = memes[indexPath.row]
-        
         navigationController?.show(detailController, sender: tableView)
         //.show is the proper implementation for this UI. present and push cause crash
         //pushViewController(detailController, animated: true)

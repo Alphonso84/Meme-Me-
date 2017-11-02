@@ -149,15 +149,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let appDelegate = object as! AppDelegate
         
         appDelegate.memes.append(meme)
-       //return meme
+      
     }
     
     
     //SHARING
     @IBAction func shareMeme(_ sender: Any) {
         
-        
-        //let memedImage = generateMemedImage()
         let controller = UIActivityViewController(activityItems: [generateMemedImage()], applicationActivities: nil)
         
         controller.completionWithItemsHandler = {
@@ -165,14 +163,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             if completed {
                 self.saveMeme()
                 self.dismiss(animated: true, completion: nil)
-                
-            }
+                }
         }
         self.present(controller, animated: true, completion: nil)
         //The below code presents as Popover and allows share button to work on iPads
         controller.popoverPresentationController?.barButtonItem = (sender as! UIBarButtonItem)
-        
-        
         //The below code hides the toolbars as to not to show in the saved memedImage.
         upperToolBar.isHidden = false
         lowerToolBar.isHidden = false
