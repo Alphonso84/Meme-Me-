@@ -128,46 +128,46 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     
     
-   func generateMemedImage() -> UIImage {
-   
+    func generateMemedImage() -> UIImage{
+    upperToolBar.isHidden = true
+    lowerToolBar.isHidden = true
     UIGraphicsBeginImageContext(self.view.frame.size)
     view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
     let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
     
+    upperToolBar.isHidden = false
+    lowerToolBar.isHidden = false
     return memedImage
     
     }
     
-    func saveMeme() {
-        let meme = Meme(topText: textFieldTop.text!, bottomText: textFieldBottom.text!, originalImage: selectedImage.image!)
+    
+    func saveMeme()  {
        
+        let meme = Meme.init(topText: textFieldTop.text!, bottomText: textFieldBottom.text!, memedImage: generateMemedImage() )
         let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
+        
         appDelegate.memes.append(meme)
-       // print(appDelegate.memes)
+      
     }
     
     
     //SHARING
     @IBAction func shareMeme(_ sender: Any) {
-        upperToolBar.isHidden = true
-        lowerToolBar.isHidden = true
         
-        let memedImage = generateMemedImage()
-        let controller = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+        let controller = UIActivityViewController(activityItems: [generateMemedImage()], applicationActivities: nil)
         
         controller.completionWithItemsHandler = {
             activity, completed, items, error in
             if completed {
                 self.saveMeme()
                 self.dismiss(animated: true, completion: nil)
-            }
+                }
         }
         self.present(controller, animated: true, completion: nil)
         //The below code presents as Popover and allows share button to work on iPads
         controller.popoverPresentationController?.barButtonItem = (sender as! UIBarButtonItem)
-        self.generateMemedImage()
-        
         //The below code hides the toolbars as to not to show in the saved memedImage.
         upperToolBar.isHidden = false
         lowerToolBar.isHidden = false
