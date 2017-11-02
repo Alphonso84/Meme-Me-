@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hqi-Dt-Oks">
-                                <rect key="frame" x="0.0" y="78" width="414" height="658"/>
+                                <rect key="frame" x="0.0" y="122" width="414" height="565"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="myCell" textLabel="shZ-ND-Olx" detailTextLabel="Ach-4t-Mx8" style="IBUITableViewCellStyleSubtitle" id="0yj-LN-4lS">
@@ -92,9 +92,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="g2Q-vB-JzY">
-                                <rect key="frame" x="0.0" y="72" width="414" height="615"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="g2Q-vB-JzY">
+                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="do7-xV-3Pp">
                                     <size key="itemSize" width="108" height="117"/>
@@ -128,9 +127,19 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yEk-7c-XF4" firstAttribute="top" secondItem="g2Q-vB-JzY" secondAttribute="bottom" id="B9W-e5-Sko"/>
+                            <constraint firstAttribute="trailing" secondItem="g2Q-vB-JzY" secondAttribute="trailing" id="LEZ-lV-Fxj"/>
+                            <constraint firstItem="g2Q-vB-JzY" firstAttribute="top" secondItem="qqI-fl-Lo1" secondAttribute="bottom" id="ZIA-HR-OgF"/>
+                            <constraint firstItem="g2Q-vB-JzY" firstAttribute="leading" secondItem="YwF-Wu-SKs" secondAttribute="leading" id="aFo-0N-oew"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Sent Memes Collection" id="7VV-jU-RGY">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="hM1-83-rS8"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="hM1-83-rS8">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="showDetail" id="iN7-WG-npC"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="g2Q-vB-JzY" id="Gzg-Jy-dih"/>
@@ -274,12 +283,6 @@
                                     <barButtonItem systemItem="action" id="mDV-Xb-ibI">
                                         <connections>
                                             <action selector="shareMeme:" destination="BYZ-38-t0r" id="oHF-qy-6qE"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem width="306" style="plain" systemItem="fixedSpace" id="YZG-IM-NRw"/>
-                                    <barButtonItem systemItem="cancel" id="94g-Wu-FgT">
-                                        <connections>
-                                            <segue destination="R1K-v0-MEY" kind="show" id="mqd-0C-hAH"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -437,7 +440,6 @@
         <image name="menu" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="DYW-c2-iZq"/>
-        <segue reference="mqd-0C-hAH"/>
+        <segue reference="iN7-WG-npC"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -24,7 +24,7 @@ class MemeDetailViewController: UIViewController {
         //memes = (UIApplication.shared.delegate as! AppDelegate).memes
         if let meme = meme {
         memeImage?.image = meme.memedImage
-        tabBarController?.tabBar.isHidden = true
+       // tabBarController?.tabBar.isHidden = true
         // Do any additional setup after loading the view.
     }
     }
@@ -33,7 +33,7 @@ class MemeDetailViewController: UIViewController {
         super.viewDidDisappear(true)
         // unhide the tab bar
         
-        tabBarController?.tabBar.isHidden = false
+       // tabBarController?.tabBar.isHidden = false
         
     }
 

@@ -64,11 +64,12 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
         detailController.meme = memes[indexPath.row]
         
         navigationController?.show(detailController, sender: collectionView)
+        //.show is the proper implementation for this UI. present and push cause crash
         //THESE ARE DIFFERENT IMPLEMENTATIONS OF PRESENTING THE DETAILVIEWCONTROLLER Change above for testing
         //present(detailController, animated: true, completion: nil)
         //pushViewController(detailController, animated: true)
         print(indexPath.row)
-        present(detailController, animated: true, completion: nil)
+        //present(detailController, animated: true, completion: nil)
 
         
             }

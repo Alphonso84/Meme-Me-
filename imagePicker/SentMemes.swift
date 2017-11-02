@@ -24,7 +24,7 @@ class SentMemes: UIViewController,UITableViewDelegate, UITableViewDataSource {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        //memes = (UIApplication.shared.delegate as! AppDelegate).memes
+        
         tableView.reloadData()
         
     }
@@ -48,8 +48,10 @@ class SentMemes: UIViewController,UITableViewDelegate, UITableViewDataSource {
         let detailController = storyboard?.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
         detailController.meme = memes[indexPath.row]
         
-        navigationController?.pushViewController(detailController, animated: true)
-        present(detailController, animated: true, completion: nil)
+        navigationController?.show(detailController, sender: tableView)
+        //.show is the proper implementation for this UI. present and push cause crash
+        //pushViewController(detailController, animated: true)
+        //present(detailController, animated: true, completion: nil)
     }
         
         
