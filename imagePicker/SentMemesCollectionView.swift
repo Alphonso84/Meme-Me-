@@ -63,7 +63,9 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
         let detailController = storyboard?.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
         detailController.meme = memes[indexPath.row]
         
-        navigationController?.present(detailController, animated: true, completion: nil)
+        navigationController?.show(detailController, sender: collectionView)
+        //THESE ARE DIFFERENT IMPLEMENTATIONS OF PRESENTING THE DETAILVIEWCONTROLLER
+        //present(detailController, animated: true, completion: nil)
         //pushViewController(detailController, animated: true)
         print(indexPath.row)
         present(detailController, animated: true, completion: nil)
